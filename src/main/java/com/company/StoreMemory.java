@@ -10,7 +10,7 @@ public class StoreMemory implements Store {
     }
 
     public void removeItem(String item){
-        listItems.remove(item);
+
     }
 
     public String[] showItems() {
