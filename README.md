@@ -1,1 +1,1 @@
-[![Java CI with Maven](https://github.com/Durtyburd/TerminalToDoList/actions/workflows/maven.yml/badge.svg?branch=master&event=workflow_run)](https://github.com/Durtyburd/TerminalToDoList/actions/workflows/maven.yml)
+[![Java CI with Maven](https://github.com/Durtyburd/TerminalToDoList/actions/workflows/maven.yml/badge.svg)](https://github.com/Durtyburd/TerminalToDoList/actions/workflows/maven.yml)
