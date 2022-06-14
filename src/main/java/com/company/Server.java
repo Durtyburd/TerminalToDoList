@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
@@ -12,11 +13,23 @@ public class Server {
     private Gson gson = new Gson();
     private Store listItems;
 
+    private boolean maybeServeCORS(HttpExchange t) throws IOException {
+        t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+        if (t.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+            t.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+            t.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
+            t.sendResponseHeaders(204, -1);
+            return true;
+        }
+        return false;
+    }
+
     public Server(Store store) throws Exception {
         listItems = store;
         HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 420), 0);
 
         server.createContext("/list", (HttpExchange t) -> {
+            if (maybeServeCORS(t)) { return; }
             if (!t.getRequestMethod().equals("GET")) {
                 t.sendResponseHeaders(405, 0);
                 t.close();
@@ -34,6 +47,7 @@ public class Server {
         });
 
         server.createContext("/add", (HttpExchange t) -> {
+            if (maybeServeCORS(t)) { return; }
             Task task = gson.fromJson(new InputStreamReader(t.getRequestBody()), Task.class);
             if (!t.getRequestMethod().equals("POST")) {
                 t.sendResponseHeaders(405, 0);
@@ -51,6 +65,7 @@ public class Server {
         });
 
         server.createContext("/delete", (HttpExchange t) -> {
+            if (maybeServeCORS(t)) { return; }
             Task task = gson.fromJson(new InputStreamReader(t.getRequestBody()), Task.class);
             if (!t.getRequestMethod().equals("DELETE")) {
                 t.sendResponseHeaders(405, 0);
