@@ -1,4 +1,4 @@
-function AddList(listItem) {
+function addList(listItem) {
   return fetch("http://localhost:420/add", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -12,4 +12,4 @@ function AddList(listItem) {
   });
 }
 
-export { AddList };
+export { addList };

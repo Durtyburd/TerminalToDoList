@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { InputTask } from "./InputTask";
-import { GetList } from "./GetList";
-import { AddList } from "./AddList";
+import { getList } from "./getList";
+import { addList } from "./addList";
+import { deleteList } from "./deleteList";
 
 function State() {
   const [listItem, setList] = useState([]);
@@ -9,17 +10,24 @@ function State() {
   const [keyPressed, updateKey] = useState("");
 
   useEffect(() => {
-    GetList().then((result) => setList(result));
+    getList().then((result) => setList(result));
   }, []);
 
   async function addItem(newItem) {
-    await AddList(newItem);
-    const list = await GetList();
+    await addList(newItem);
+    const list = await getList();
+    setList(list);
+  }
+
+  async function deleteItem(item) {
+    await deleteList(item);
+    const list = await getList();
     setList(list);
   }
 
   return (
     <InputTask
+      deleteItem={deleteItem}
       listItem={listItem}
       addItem={addItem}
       inputText={inputText}

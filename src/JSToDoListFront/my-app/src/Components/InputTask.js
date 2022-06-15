@@ -1,13 +1,13 @@
 import { ListItems } from "./ListItems";
 import React from "react";
 
-function InputTask({ listItem, addItem, inputText, setText }) {
+function InputTask({ listItem, addItem, inputText, setText, deleteItem }) {
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
   const items = listItem.map((listItem, i) => (
-    <ListItems title={listItem} key={i} />
+    <ListItems delete={deleteItem} title={listItem} key={i} />
   ));
 
   return (
@@ -22,7 +22,7 @@ function InputTask({ listItem, addItem, inputText, setText }) {
         <input type="button" value="Enter" onClick={() => addItem(inputText)} />
       </form>
       <div>
-        <ul> {items}</ul>
+        <ul>{items}</ul>
       </div>
     </div>
   );

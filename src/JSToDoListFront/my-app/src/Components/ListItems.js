@@ -1,9 +1,7 @@
-import { DeleteList } from "./DeleteList";
-
 function ListItems(props) {
   return (
     <li>
-      <button>x</button>
+      <button onClick={() => props.delete(props.title)}>x</button>
       {props.title}
     </li>
   );
