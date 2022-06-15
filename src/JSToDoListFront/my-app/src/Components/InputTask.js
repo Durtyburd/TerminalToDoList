@@ -1,40 +1,30 @@
 import { ListItems } from "./ListItems";
 import React from "react";
 
-function InputTask({ list, addItem, inputText, setText }) {
-  const items = [];
-
+function InputTask({ listItem, addItem, inputText, setText }) {
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
-  for (let i = 0; i < list.length; i++) {
-    console.log("This is the length of the list after loop: " + list.length);
-    console.log("This is the list: " + list);
-    items.push(<ListItems title={list[i]} key={i} />);
-  }
+  const items = listItem.map((listItem, i) => (
+    <ListItems title={listItem} key={i} />
+  ));
 
   return (
-    <>
+    <div>
+      <form>
+        <input
+          type="text"
+          placeholder="Enter task"
+          onChange={handleChange}
+          value={inputText}
+        />
+        <input type="button" value="Enter" onClick={() => addItem(inputText)} />
+      </form>
       <div>
-        <form>
-          <input
-            type="text"
-            placeholder="Enter task"
-            onChange={handleChange}
-            value={inputText}
-          />
-          <input
-            type="button"
-            value="Enter"
-            onClick={() => {
-              addItem(inputText);
-            }}
-          />
-        </form>
-        {items}
+        <ul> {items}</ul>
       </div>
-    </>
+    </div>
   );
 }
 

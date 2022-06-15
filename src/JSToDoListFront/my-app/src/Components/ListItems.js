@@ -1,10 +1,11 @@
+import { DeleteList } from "./DeleteList";
+
 function ListItems(props) {
   return (
-    <div>
-      <ul>
-        <li>{props.title}</li>
-      </ul>
-    </div>
+    <li>
+      <button>x</button>
+      {props.title}
+    </li>
   );
 }
 

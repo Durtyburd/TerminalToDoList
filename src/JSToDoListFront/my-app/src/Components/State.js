@@ -4,7 +4,7 @@ import { GetList } from "./GetList";
 import { AddList } from "./AddList";
 
 function State() {
-  const [list, setList] = useState([]);
+  const [listItem, setList] = useState([]);
   const [inputText, setText] = useState("");
   const [keyPressed, updateKey] = useState("");
 
@@ -20,7 +20,7 @@ function State() {
 
   return (
     <InputTask
-      list={list}
+      listItem={listItem}
       addItem={addItem}
       inputText={inputText}
       setText={setText}
