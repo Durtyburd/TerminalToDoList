@@ -23,11 +23,9 @@ public class FileTasks {
         File file = new File(filePath);
         String list = "";
         Scanner myReader = new Scanner(file);
-        System.out.println("Starting loop");
         while (myReader.hasNextLine()) {
             list = list + myReader.nextLine() + "\n";
         }
-        System.out.println(list);
         return list;
     };
 }
