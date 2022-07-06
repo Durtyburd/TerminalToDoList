@@ -45,7 +45,7 @@ public class Server {
     }
     public Server(Store store) throws Exception {
         listItems = store;
-        HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 420), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 80), 0);
 
         server.createContext("/", attempt((HttpExchange t) -> {
            String htmlFile = FileTasks.readFile("src/JSToDoListFront/public/index.html");
