@@ -48,7 +48,7 @@ public class Server {
     }
     public Server(Store store) throws Exception {
         listItems = store;
-        HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 80), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress("0.0.0.0", 80), 0);
 
         server.createContext("/", attempt((HttpExchange t) -> {
            String htmlFile = FileTasks.readFile("src/JSToDoListFront/public/index.html");
@@ -67,7 +67,9 @@ public class Server {
             File directoryPath = new File("src/JSToDoListFront/public");
             String[] contents = directoryPath.list();
             for(int i = 0; i < contents.length; i++) {
-                if(Objects.equals(String.valueOf(newPath), "\\public\\" + contents[i])) {
+                String generatedPath = File.separator + "public" + File.separator + contents[i];
+                if(Objects.equals(String.valueOf(newPath), generatedPath)) {
+                    System.out.println("This is the path to CHECK:" + "/public/" + (contents[i]));
                     String jsFile = FileTasks.readFile(String.valueOf(combinedPaths));
                     byte[] bytes = jsFile.getBytes(StandardCharsets.UTF_8);
                     t.sendResponseHeaders(200, bytes.length);
