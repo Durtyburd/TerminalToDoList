@@ -1,5 +1,5 @@
 function addList(listItem) {
-  return fetch("http://localhost:420/add", {
+  return fetch("/add", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: [JSON.stringify({ name: listItem })],
