@@ -13,8 +13,8 @@ function State() {
     getList().then((result) => setList(result));
   }
 
-  setInterval(reload(), 1000);
-  useEffect(reload(), []);
+  setInterval(reload, 1000);
+  useEffect(reload, []);
 
   async function addItem(newItem) {
     await addList(newItem);
