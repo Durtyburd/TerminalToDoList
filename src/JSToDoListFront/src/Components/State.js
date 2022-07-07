@@ -9,9 +9,12 @@ function State() {
   const [inputText, setText] = useState("");
   const [keyPressed, updateKey] = useState("");
 
-  useEffect(() => {
+  function reload() {
     getList().then((result) => setList(result));
-  }, []);
+  }
+
+  setInterval(reload, 1000);
+  useEffect(reload, []);
 
   async function addItem(newItem) {
     await addList(newItem);
