@@ -1,5 +1,5 @@
 async function deleteList(listItem) {
-  return fetch("http://localhost:420/delete", {
+  return fetch("/delete", {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: [JSON.stringify({ name: listItem })],

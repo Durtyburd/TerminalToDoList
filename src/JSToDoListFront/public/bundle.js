@@ -56,7 +56,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addList\": function() { return /* binding */ addList; }\n/* harmony export */ });\nfunction addList(listItem) {\n  return fetch(\"http://localhost:420/add\", {\n    method: \"POST\",\n    headers: {\n      \"Content-Type\": \"application/json\"\n    },\n    body: [JSON.stringify({\n      name: listItem\n    })]\n  }).then(res => {\n    if (res.ok) {\n      console.log(\"HTTP request successful\");\n    } else {\n      console.log(\"HTTP request unsuccessful.\");\n    }\n  });\n}\n\n\n\n//# sourceURL=webpack://my-app/./src/Components/addList.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addList\": function() { return /* binding */ addList; }\n/* harmony export */ });\nfunction addList(listItem) {\n  return fetch(\"/add\", {\n    method: \"POST\",\n    headers: {\n      \"Content-Type\": \"application/json\"\n    },\n    body: [JSON.stringify({\n      name: listItem\n    })]\n  }).then(res => {\n    if (res.ok) {\n      console.log(\"HTTP request successful\");\n    } else {\n      console.log(\"HTTP request unsuccessful.\");\n    }\n  });\n}\n\n\n\n//# sourceURL=webpack://my-app/./src/Components/addList.js?");
 
 /***/ }),
 
@@ -66,7 +66,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"deleteList\": function() { return /* binding */ deleteList; }\n/* harmony export */ });\nasync function deleteList(listItem) {\n  return fetch(\"http://localhost:420/delete\", {\n    method: \"DELETE\",\n    headers: {\n      \"Content-Type\": \"application/json\"\n    },\n    body: [JSON.stringify({\n      name: listItem\n    })]\n  }).then(res => {\n    if (res.ok) {\n      console.log(\"HTTP request successful\");\n    } else {\n      console.log(\"HTTP request unsuccessful.\");\n    }\n  });\n}\n\n\n\n//# sourceURL=webpack://my-app/./src/Components/deleteList.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"deleteList\": function() { return /* binding */ deleteList; }\n/* harmony export */ });\nasync function deleteList(listItem) {\n  return fetch(\"/delete\", {\n    method: \"DELETE\",\n    headers: {\n      \"Content-Type\": \"application/json\"\n    },\n    body: [JSON.stringify({\n      name: listItem\n    })]\n  }).then(res => {\n    if (res.ok) {\n      console.log(\"HTTP request successful\");\n    } else {\n      console.log(\"HTTP request unsuccessful.\");\n    }\n  });\n}\n\n\n\n//# sourceURL=webpack://my-app/./src/Components/deleteList.js?");
 
 /***/ }),
 
@@ -76,7 +76,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getList\": function() { return /* binding */ getList; }\n/* harmony export */ });\nasync function getList() {\n  const response = await fetch(\"http://localhost:420/list\");\n  const data = await response.json();\n  const arr = data.map(data => data.name);\n  return arr;\n}\n\n\n\n//# sourceURL=webpack://my-app/./src/Components/getList.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getList\": function() { return /* binding */ getList; }\n/* harmony export */ });\nasync function getList() {\n  const response = await fetch(\"/list\");\n  const data = await response.json();\n  const arr = data.map(data => data.name);\n  return arr;\n}\n\n\n\n//# sourceURL=webpack://my-app/./src/Components/getList.js?");
 
 /***/ }),
 
