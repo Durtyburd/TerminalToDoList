@@ -2,4 +2,4 @@
 
 To run the app in terminal use below command:
 
-mvn exec:java -D"exec.args"="memory cli"
+sudo mvn exec:java -D"exec.args"="filesystem server"
