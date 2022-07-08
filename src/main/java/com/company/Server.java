@@ -94,7 +94,7 @@ public class Server {
                     .map(l -> new Task(l))
                     .toArray(Task[]::new);
             String jsonResponse = gson.toJson(response, Task[].class);
-            t.sendResponseHeaders(200, jsonResponse.length());
+            t.sendResponseHeaders(200, 0);
             OutputStream os = t.getResponseBody();
             os.write(jsonResponse.getBytes());
             os.close();
